@@ -42,6 +42,7 @@ def extract_date_times (xml_values):
 def extract_data (points):
     """Code to..."""
     latitudes, longitudes, elevations, times, heart_rates = [], [], [], [], []
+    heart_rate_data = True
     for pt in activity_points:
         latitudes.append(pt['lat'])
         longitudes.append(pt['lon'])
@@ -49,7 +50,6 @@ def extract_data (points):
         times.append(pt.time)
         try:
             heart_rates.append(pt.find_all('gpxtpx:hr')[0])
-            heart_rate_data = True
         except:
             heart_rates.append('No HR data')
             heart_rate_data = False
